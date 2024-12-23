@@ -1,11 +1,11 @@
-/*! jQuery UI - v1.13.2 - 2023-02-09
-* http://jqueryui.com
+/*! jQuery UI - v1.14.1 - 2024-10-30
+* https://jqueryui.com
 * Includes: widget.js
-* Copyright jQuery Foundation and other contributors; Licensed MIT */
+* Copyright OpenJS Foundation and other contributors; Licensed MIT */
 
 ( function( factory ) {
 	"use strict";
-	
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -20,23 +20,23 @@
 
 $.ui = $.ui || {};
 
-var version = $.ui.version = "1.13.2";
+var version = $.ui.version = "1.14.1";
 
 
 /*!
- * jQuery UI Widget 1.13.2
- * http://jqueryui.com
+ * jQuery UI Widget 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Widget
 //>>group: Core
 //>>description: Provides a factory for creating stateful widgets with a common API.
-//>>docs: http://api.jqueryui.com/jQuery.widget/
-//>>demos: http://jqueryui.com/widget/
+//>>docs: https://api.jqueryui.com/jQuery.widget/
+//>>demos: https://jqueryui.com/widget/
 
 
 var widgetUuid = 0;
@@ -67,6 +67,9 @@ $.widget = function( name, base, prototype ) {
 
 	var namespace = name.split( "." )[ 0 ];
 	name = name.split( "." )[ 1 ];
+	if ( name === "__proto__" || name === "constructor" ) {
+		return $.error( "Invalid widget name: " + name );
+	}
 	var fullName = namespace + "-" + name;
 
 	if ( !prototype ) {
